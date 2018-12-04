@@ -24,3 +24,4 @@ mkdir build
 cd build
 
 cmake .. -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=../miniconda/
+make xtest -j16
