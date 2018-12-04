@@ -8,12 +8,12 @@ image_resource:
 inputs:
 - name: xtensor
 - name: xtl
-- name: xtl_task
+- name: droneme
 
 outputs:
 - name: miniconda_xtl
   path: miniconda
 
 run:
-  path: xtl_task/script.sh
+  path: droneme/tasks/xtl_task/script.sh
   args: []
