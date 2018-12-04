@@ -2,7 +2,7 @@
 set -e
 
 apt update
-apt install g++ -y
+apt install cmake g++ wget -y
 
 export CC=gcc
 export CXX=g++
@@ -16,7 +16,7 @@ bash miniconda.sh -b -u -p ./miniconda
 export PATH="./miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
-conda update -q conda gtest=1.8.0 cmake -c conda-forge
+conda update -q conda
 conda install nlohmann_json -c QuantStack
 
 cd xtl
