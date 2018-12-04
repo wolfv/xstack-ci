@@ -2,7 +2,7 @@
 set -e
 
 apt update
-apt install g++
+apt install g++ -y
 
 export CC=gcc
 export CXX=g++
