@@ -2,7 +2,7 @@
 set -e
 
 apt update
-apt install cmake g++ wget -y
+apt install cmake g++ wget git -y
 
 export CC=gcc
 export CXX=g++
