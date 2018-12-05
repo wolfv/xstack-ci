@@ -15,5 +15,5 @@ outputs:
   path: miniconda
 
 run:
-  path: droneme/tasks/xtl_task/script.sh
+  path: droneme/tasks/xtensor_task/script.sh
   args: []
