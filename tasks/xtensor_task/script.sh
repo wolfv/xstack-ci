@@ -9,11 +9,14 @@ apt install cmake g++ wget git rsync -y
 export CC=gcc
 export CXX=g++
 
-rsync -a miniconda_xtl/ miniconda/
+# note could also try to use RSYNC here
+rm -rf miniconda
+mv miniconda_xtl miniconda
+
+ls miniconda
+find miniconda
 
 export PATH="$WORKDIR/miniconda/bin:$PATH"
-
-conda config --set always_yes yes --set changeps1 no
 
 cd xtensor
 mkdir build
