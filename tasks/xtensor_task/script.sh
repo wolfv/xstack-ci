@@ -9,12 +9,22 @@ apt install cmake g++ wget git rsync -y
 export CC=gcc
 export CXX=g++
 
-rsync -a -H -X -A miniconda_xtl/ miniconda/
+# rsync -a -H -X -A miniconda_xtl/ miniconda/
 
-find miniconda/
+# find miniconda/
 
-export PATH="$WORKDIR/miniconda/bin:$PATH"
+# export PATH="$WORKDIR/miniconda/bin:$PATH"
 
+# install xtl
+
+cd xtl
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
+make install
+cd $WORKDIR
+
+# test xtensor
 
 cd xtensor
 mkdir build
