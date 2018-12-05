@@ -7,12 +7,7 @@ image_resource:
 
 inputs:
 - name: xtensor
-- name: miniconda_xtl
 - name: droneme
-
-outputs:
-- name: miniconda_xtensor
-  path: miniconda
 
 run:
   path: droneme/tasks/xtensor_task/script.sh
