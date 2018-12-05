@@ -25,6 +25,9 @@ cd xtl
 mkdir build
 cd build
 
+julia -E "using Pkg; Pkg.add(PackageSpec(name=\"CxxWrap\", version=\"0.8.1\"))"
+
+
 cmake .. -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make xtest -j16
 make install -j16
