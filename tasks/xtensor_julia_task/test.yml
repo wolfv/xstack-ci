@@ -12,5 +12,5 @@ inputs:
 - name: xtensor-julia
 
 run:
-  path: buildscripts/tasks/xtensor_python_task/script.sh
+  path: buildscripts/tasks/xtensor_julia_task/script.sh
   args: []
