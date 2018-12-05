@@ -4,7 +4,7 @@ set -e
 export WORKDIR=`pwd`
 
 apt update
-apt install cmake g++ wget git rsync -y
+apt install cmake g++ wget git -y
 
 export CC=gcc
 export CXX=g++
