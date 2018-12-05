@@ -6,7 +6,6 @@ image_resource:
   source: {repository: ubuntu, tag: 18.04}
 
 inputs:
-- name: xtensor
 - name: xtl
 - name: droneme
 
