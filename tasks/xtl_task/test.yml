@@ -7,12 +7,12 @@ image_resource:
 
 inputs:
 - name: xtl
-- name: droneme
+- name: buildscripts
 
 outputs:
 - name: miniconda_xtl
   path: miniconda
 
 run:
-  path: droneme/tasks/xtl_task/script.sh
+  path: buildscripts/tasks/xtl_task/script.sh
   args: []

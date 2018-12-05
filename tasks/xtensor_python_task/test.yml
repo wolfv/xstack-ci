@@ -6,11 +6,11 @@ image_resource:
   source: {repository: ubuntu, tag: 18.04}
 
 inputs:
-- name: droneme
+- name: buildscripts
 - name: xtl
 - name: xtensor
 - name: xtensor-python
 
 run:
-  path: droneme/tasks/xtensor_python_task/script.sh
+  path: buildscripts/tasks/xtensor_python_task/script.sh
   args: []
