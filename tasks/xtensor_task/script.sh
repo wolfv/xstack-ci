@@ -9,12 +9,6 @@ apt install cmake g++ wget git -y
 export CC=gcc
 export CXX=g++
 
-# rsync -a -H -X -A miniconda_xtl/ miniconda/
-
-# find miniconda/
-
-# export PATH="$WORKDIR/miniconda/bin:$PATH"
-
 # install xtl
 
 cd xtl

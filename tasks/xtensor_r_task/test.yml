@@ -12,5 +12,5 @@ inputs:
 - name: xtensor-r
 
 run:
-  path: buildscripts/tasks/xtensor_r_tasks/script.sh
+  path: buildscripts/tasks/xtensor_r_task/script.sh
   args: []

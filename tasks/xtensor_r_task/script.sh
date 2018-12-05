@@ -4,7 +4,7 @@ set -e
 export WORKDIR=`pwd`
 
 apt update
-apt install cmake g++ wget git -y
+apt install cmake g++ gfortran wget git -y
 
 export CC=gcc
 export CXX=g++
@@ -19,7 +19,7 @@ export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
-conda install r r-rcpp r-base r-devtools readline -c conda-forge
+conda install r r-rcpp r-base r-devtools ncurses readline -c conda-forge
 
 R -e "install.packages(c('RInside', 'testthat'), repos='http://cran.us.r-project.org')"
 
@@ -47,5 +47,5 @@ cd $WORKDIR
 cd xtensor-r
 mkdir build
 cd build
-cmake .. -DXTENSOR_INSTALL_R_PACKAGES=OFF -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=$HOME/miniconda ..
+cmake .. -DXTENSOR_INSTALL_R_PACKAGES=OFF -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$HOME/miniconda ..
 make xtest -j16
