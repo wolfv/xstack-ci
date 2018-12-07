@@ -15,7 +15,7 @@ export MINICONDA_OSX="MacOSX-x86_64"
 
 wget "http://repo.continuum.io/miniconda/Miniconda3-$MINICONDA_VERSION-$MINICONDA_LINUX.sh" -O miniconda.sh;
 bash miniconda.sh -b -u -p $WORKDIR/miniconda
-export PATH="/miniconda/bin:$PATH"
+export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
