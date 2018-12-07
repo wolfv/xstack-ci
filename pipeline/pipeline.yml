@@ -1,0 +1,130 @@
+---
+resources:
+- name: xtl
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtl
+    branch: master
+- name: xtensor
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor
+    branch: master
+- name: xtensor-python
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor-python
+    branch: master
+- name: xtensor-r
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor-r
+    branch: master
+- name: xtensor-julia
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor-julia
+    branch: master
+- name: xtensor-blas
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor-blas
+    branch: master
+- name: xtensor-io
+  type: git
+  source:
+    uri: https://github.com/QuantStack/xtensor-io
+    branch: master
+- name: buildscripts
+  type: git
+  source:
+    uri: https://github.com/xtensorgistbucket/droneme
+    branch: master
+
+
+jobs:
+- name: job-xtl-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+    trigger: true
+  - task: xtl-test
+    file: buildscripts/tasks/xtl_task/test.yml
+
+- name: job-xtensor-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtensor
+    trigger: true
+  - get: xtl
+    passed: [job-xtl-test]
+    trigger: true
+  - task: xtensor-test
+    file: buildscripts/tasks/xtensor_task/test.yml
+
+- name: job-xtensor-python-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-python
+    trigger: true
+  - task: xtensor-python-test
+    file: buildscripts/tasks/xtensor_python_task/test.yml
+
+- name: job-xtensor-r-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-r
+    trigger: true
+  - task: xtensor-r-test
+    file: buildscripts/tasks/xtensor_r_task/test.yml
+
+- name: job-xtensor-julia-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-julia
+    trigger: true
+  - task: xtensor-julia-test
+    file: buildscripts/tasks/xtensor_julia_task/test.yml
+
+- name: job-xtensor-blas-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-blas
+    trigger: true
+  - task: xtensor-blas-test
+    file: buildscripts/tasks/xtensor_blas_task/test.yml
+
+- name: job-xtensor-io-test
+  public: true
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-io
+    trigger: true
+  - task: xtensor-io-test
+    file: buildscripts/tasks/xtensor_io_task/test.yml
