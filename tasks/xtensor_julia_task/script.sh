@@ -41,5 +41,5 @@ export JlCxx_DIR=`echo $JlCxx_DIR | tr -d '"'`
 cd xtensor-julia
 mkdir build
 cd build
-cmake .. -DDOWNLOAD_GTEST=ON -DJlCxx_DIR=$JlCxx_DIR
+cmake .. -DDOWNLOAD_GTEST=ON -DJlCxx_DIR=$JlCxx_DIR -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make xtest -j16
