@@ -25,7 +25,7 @@ mkdir build
 cd build
 
 cmake .. -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
-make install -j$(nprocs)
+make install -j$(nproc)
 cd $WORKDIR
 
 # test xtensor-julia
@@ -42,4 +42,4 @@ cd xtensor-julia
 mkdir build
 cd build
 cmake .. -DDOWNLOAD_GTEST=ON -DJlCxx_DIR=$JlCxx_DIR -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
-make xtest -j$(nprocs)
+make xtest -j$(nproc)

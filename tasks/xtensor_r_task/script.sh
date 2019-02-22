@@ -39,7 +39,7 @@ mkdir build
 cd build
 
 cmake .. -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
-make install -j$(nprocs)
+make install -j$(nproc)
 cd $WORKDIR
 
 # test xtensor-python
@@ -48,4 +48,4 @@ cd xtensor-r
 mkdir build
 cd build
 cmake .. -DXTENSOR_INSTALL_R_PACKAGES=OFF -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$HOME/miniconda ..
-make xtest -j$(nprocs)
+make xtest -j$(nproc)
