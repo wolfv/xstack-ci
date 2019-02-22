@@ -25,4 +25,4 @@ mkdir build
 cd build
 
 cmake .. -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
-make xtest -j16
+make xtest -j$(nprocs)
