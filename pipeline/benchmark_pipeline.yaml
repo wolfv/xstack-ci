@@ -25,4 +25,23 @@ jobs:
   - get: xtensor
     trigger: true
   - task: xtensor-benchmark
-    file: buildscripts/tasks/xtensor_benchmark_task/benchmark.yml
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: ubuntu, tag: 18.04}
+      inputs:
+        - name: buildscripts
+      run:
+        path: buildscripts/tasks/xtensor_benchmark_task/script.sh
+        args: []
+      params:
+        OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
+        OS_IDENTITY_API_VERSION: 3
+        OS_USER_DOMAIN_NAME: "Default"
+        OS_PROJECT_DOMAIN_NAME: "Default"
+        OS_TENANT_ID: "82e9adbed11a4d46a8f68f01182ba38f"
+        OS_TENANT_NAME: "2078668896913808"
+        OS_USERNAME:  ((os_user))
+        OS_REGION_NAME: "SBG5"
+        OS_PASSWORD: ((os_pass))

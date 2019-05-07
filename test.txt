@@ -1,0 +1,13 @@
+# Quick readme
+
+- you need to find a concourse instance or create one. using docker-compose it's 
+pretty simple!
+- to add the pipeline to concourse run
+  `fly -t quantcli set-pipeline --pipeline xbench --config benchmark_pipeline.yaml -l secrets.yml`
+- note to start up openstack machines, you need to have a `secrets.yml` file that contains
+  the correct password and user name. E.g.:
+
+  ```
+  os_pass: xyz
+  os_user: abc
+  ```
