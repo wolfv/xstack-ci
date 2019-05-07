@@ -16,7 +16,6 @@ resources:
     uri: https://github.com/xtensorgistbucket/droneme
     branch: master
 
-
 jobs:
 - name: job-xtensor-benchmark
   public: true
