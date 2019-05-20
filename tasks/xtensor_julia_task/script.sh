@@ -30,7 +30,7 @@ cd $WORKDIR
 
 # test xtensor-julia
 
-julia -E "using Pkg; Pkg.add(PackageSpec(name=\"CxxWrap\", version=\"0.8.1\"))"
+julia -E "using Pkg; Pkg.add(PackageSpec(name=\"CxxWrap\", version=\"0.8.2\"))"
 echo "CxxWrap Installed"
 export JlCxx_DIR=$(julia -E "using CxxWrap; joinpath(dirname(pathof(CxxWrap)), \"..\", \"deps\", \"usr\", \"lib\", \"cmake\", \"JlCxx\")")
 
