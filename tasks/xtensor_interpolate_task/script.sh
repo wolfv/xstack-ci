@@ -31,4 +31,4 @@ cd build
 
 cmake .. -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make -j$(nproc)
-./test/test_xtensor-fftw
+./test/test_xtensor_interpolate
