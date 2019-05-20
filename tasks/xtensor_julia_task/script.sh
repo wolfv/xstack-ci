@@ -7,7 +7,7 @@ echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sourc
 
 apt update
 apt install wget g++ git -y
-apt-get -t stretch-backports install "cmake"
+apt-get -t stretch-backports install "cmake" -y
 
 export CC=gcc
 export CXX=g++
