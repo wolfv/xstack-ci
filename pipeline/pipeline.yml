@@ -35,6 +35,11 @@ resources:
   source:
     uri: https://github.com/QuantStack/xtensor-io
     branch: master
+- name: xtensor-fftw
+  type: git
+  source:
+    uri: https://github.com/egpbos/xtensor-fftw
+    branch: master
 - name: buildscripts
   type: git
   source:
@@ -133,3 +138,17 @@ jobs:
     trigger: true
   - task: xtensor-io-test
     file: buildscripts/tasks/xtensor_io_task/test.yml
+
+- name: job-xtensor-fftw-test
+  public: true
+  serial_groups: [sg1]
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-fftw
+    trigger: true
+  - task: xtensor-fftw-test
+    file: buildscripts/tasks/xtensor_fftw_task/test.yml
