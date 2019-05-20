@@ -40,6 +40,11 @@ resources:
   source:
     uri: https://github.com/egpbos/xtensor-fftw
     branch: master
+- name: xtensor-interpolate
+  type: git
+  source:
+    uri: https://github.com/rjsberry/xtensor-interpolate
+    branch: master
 - name: buildscripts
   type: git
   source:
@@ -152,3 +157,17 @@ jobs:
     trigger: true
   - task: xtensor-fftw-test
     file: buildscripts/tasks/xtensor_fftw_task/test.yml
+
+- name: job-xtensor-interpolate-test
+  public: true
+  serial_groups: [sg1]
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: xtensor-interpolate
+    trigger: true
+  - task: xtensor-interpolate-test
+    file: buildscripts/tasks/xtensor_interpolate_task/test.yml

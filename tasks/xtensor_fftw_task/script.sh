@@ -19,10 +19,8 @@ export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
-conda install nlohmann_json openblas mkl -c QuantStack -c conda-forge
 
 # install xtl
-
 cd xtl
 mkdir build
 cd build
@@ -31,7 +29,6 @@ make install
 cd $WORKDIR
 
 # install xtensor
-
 cd xtensor
 mkdir build
 cd build
@@ -40,7 +37,6 @@ cmake .. -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make install -j$(nproc)
 cd $WORKDIR
 
-# test xtensor-blas
 cd xtensor-fftw
 mkdir build
 cd build
