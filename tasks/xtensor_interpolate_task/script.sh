@@ -18,20 +18,17 @@ make install
 cd $WORKDIR
 
 # install xtensor
-
 cd xtensor
 mkdir build
 cd build
-
 cmake .. -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make install -j$(nproc)
 cd $WORKDIR
 
-# test xtensor-blas
 cd xtensor-interpolate
 mkdir build
 cd build
 
-cmake .. -DDOWNLOAD_GTEST=ON
+cmake .. -DDOWNLOAD_GTEST=ON -DCMAKE_INSTALL_PREFIX=$WORKDIR/miniconda/
 make -j$(nproc)
 ./test/test_xtensor-fftw
