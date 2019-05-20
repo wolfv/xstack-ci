@@ -4,7 +4,11 @@ set -e
 export WORKDIR=`pwd`
 
 apt update
-apt install cmake g++ git -y
+apt install wget g++ git -y
+
+wget -qO- "https://github.com/Kitware/CMake/releases/download/v3.14.4/cmake-3.14.4-Linux-x86_64.tar.gz" | \
+  tar --strip-components=1 -xz -C /usr/local
+
 
 export CC=gcc
 export CXX=g++
