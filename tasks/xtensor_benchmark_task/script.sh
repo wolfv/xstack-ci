@@ -16,7 +16,6 @@ apt install python3-dev python3-pip ssh -y
 pip3 install python-openstackclient
 
 openstack server list
-openstack keypair create ngkey --private-key ~/.ssh/id_rsa
 
 # create openstack server with ubuntu 18.04
 openstack server create benchmakina --flavor b2-7 --image 9f8b2735-4c30-4784-9847-dc18b0e58951 --key-name ngkey
@@ -30,4 +29,4 @@ source getipresult.sh
 echo "IP ADDRESS "
 echo $SERVER_IPADDR
 
-# openstack server ssh benchmakina --private -4
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@$SERVER_IPADDR /bin/uname -a
