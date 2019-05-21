@@ -11,10 +11,11 @@ apt-get install jq python3-dev python3-pip ssh -y
 mkdir -p ~/keys/
 
 python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/formatssh.py
-cat ~/keys/ssh_key
-chmod 600 ~/keys/ssh_key
+ls -al
+cat ssh_key
+chmod 600 ssh_key
 
-ssh -o StrictHostKeyChecking=no -i ~/keys/ssh_key ubuntu@51.68.91.194 /bin/uname -a
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@51.68.91.194 /bin/uname -a
 
 pip3 install python-openstackclient
 
@@ -40,4 +41,4 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 
 echo "IP ADDRESS ", $SERVER_IPADDR
 
-ssh -o StrictHostKeyChecking=no -i ~/keys/ssh_key ubuntu@$SERVER_IPADDR /bin/uname -a
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR /bin/uname -a
