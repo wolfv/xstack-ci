@@ -8,8 +8,11 @@ export WORKDIR=`pwd`
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 
-echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
-echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
+echo $SSH_PRIVATE_KEY
+echo -e $SSH_PRIVATE_KEY
+
+echo -e $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+echo -e $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
 
 chmod 600 ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa.pub
