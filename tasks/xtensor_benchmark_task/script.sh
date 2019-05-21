@@ -20,20 +20,18 @@ openstack server list
 # create openstack server with ubuntu 18.04
 openstack server create benchmakina --flavor b2-7 --image 9f8b2735-4c30-4784-9847-dc18b0e58951 --key-name ngkey
 
-openstack server show benchmakina
-openstack server show benchmakina -c addresses -f json > address.json
-
-ls -al
-ls -al ./buildscripts
-ls -al ./buildscripts/tasks
-
-active="NOTHING"
+active="FALSE"
 
 until [ "$active" = "ACTIVE" ]
 do
   active=$(openstack server show benchmakina -f json | jq -r .status)
   echo "Status: " $active
 done
+
+openstack server show benchmakina
+openstack server show benchmakina -c addresses -f json > address.json
+
+cat address.json
 
 python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py
 source getipresult.sh
