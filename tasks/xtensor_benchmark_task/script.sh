@@ -14,8 +14,12 @@ echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
 chmod 600 ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa.pub
 
+cat ~/.ssh/id_rsa
+
 apt update
 apt install jq python3-dev python3-pip ssh -y
+
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@51.68.91.194 /bin/uname -a
 
 pip3 install python-openstackclient
 
