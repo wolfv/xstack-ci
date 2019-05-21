@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e -v
+set -v
 
 echo "Running next version."
 
@@ -8,14 +8,8 @@ export WORKDIR=`pwd`
 apt-get update
 apt-get install jq python3-dev python3-pip ssh -y
 
-mkdir -p ~/keys/
-
 python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/formatssh.py
-ls -al
-cat ssh_key
 chmod 600 ssh_key
-
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@51.68.91.194 /bin/uname -a
 
 pip3 install python-openstackclient
 
@@ -42,3 +36,12 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 echo "IP ADDRESS ", $SERVER_IPADDR
 
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR /bin/uname -a
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR apt install cmake git g++
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtl
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtensor
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xsimd
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xtl && mkdir build && cd build && cmake .. && make install
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xsimd && mkdir build && cd build && cmake .. && make install
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD && make xbenchmark
+
+openstack server delete benchmakina
