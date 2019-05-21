@@ -43,6 +43,6 @@ ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "git clone http
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "git clone https://github.com/QuantStack/xsimd"
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xtl && mkdir build && cd build && cmake .. && sudo make install"
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xsimd && mkdir build && cd build && cmake .. && sudo make install"
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD && make xbenchmark"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD=ON && make xbenchmark"
 
 openstack server delete benchmakina
