@@ -33,7 +33,7 @@ openstack server show benchmakina -c addresses -f json > address.json
 
 cat address.json
 
-export $SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py)
+export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py)
 
 echo "IP ADDRESS ", $SERVER_IPADDR
 
