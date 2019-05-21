@@ -36,6 +36,7 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 echo "IP ADDRESS ", $SERVER_IPADDR
 
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR /bin/uname -a
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR sudo apt-get update
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR sudo apt-get install cmake git g++ -y
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtl
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtensor
