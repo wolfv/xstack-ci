@@ -1,5 +1,7 @@
 #!/bin/sh
-set -e
+set -e -x
+
+echo "Running next version."
 
 export WORKDIR=`pwd`
 

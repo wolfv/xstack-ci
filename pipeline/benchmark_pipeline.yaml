@@ -45,5 +45,5 @@ jobs:
         OS_USERNAME:  ((os_user))
         OS_REGION_NAME: "SBG5"
         OS_PASSWORD: ((os_pass))
-        SSH_PRIVATE_KEY: ((ssh_private))
-        SSH_PUBLIC_KEY: ((ssh_public))
+        SSH_PRIVATE_KEY: ((ssh_private_key))
+        SSH_PUBLIC_KEY: ((ssh_public_key))
