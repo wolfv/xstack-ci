@@ -5,5 +5,5 @@ public_key = os.environ['SSH_PUBLIC_KEY']
 
 private_key.replace(' ', '\n')
 
-with open('~/ssh_key', 'w+') as fo:
+with open('~/keys/ssh_key', 'w+') as fo:
 	fo.write(private_key)
