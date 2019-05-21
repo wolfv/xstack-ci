@@ -11,7 +11,7 @@ echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
 echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
 
 apt update
-apt install python3-dev python3-pip ssh -y
+apt install jq python3-dev python3-pip ssh -y
 
 pip3 install python-openstackclient
 
@@ -24,9 +24,19 @@ openstack server show benchmakina
 openstack server show benchmakina -c addresses -f json > address.json
 
 ls -al
+ls -al ./buildscripts
+ls -al ./buildscripts/tasks
 
-python3 $WORKDIR/getip.py
-source $WORKDIR/getipresult.sh
+active="NOTHING"
+
+until [ "$active" == "ACTIVE" ]
+do
+  active=$(openstack server show benchmakina -f json | jq -r .status)
+  echo "Status: " $active
+done
+
+python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py
+source getipresult.sh
 
 echo "IP ADDRESS "
 echo $SERVER_IPADDR
