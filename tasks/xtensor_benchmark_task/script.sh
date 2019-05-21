@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e -x
+set -e -v
 
 echo "Running next version."
 
@@ -12,12 +12,12 @@ pip3 install python-openstackclient
 
 printenv | grep OS_
 
+mkdir -p ~/.ssh/
+
 echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
 echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
 
 openstack server list
-
-head -n1 ~/.ssh/id_rsa
 
 openstack keypair create ngkey --private-key ~/.ssh/id_rsa
 
