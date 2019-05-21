@@ -35,14 +35,14 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 
 echo "IP ADDRESS ", $SERVER_IPADDR
 
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR /bin/uname -a
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR sudo apt-get update
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR sudo apt-get install cmake git g++ -y
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtl
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xtensor
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR git clone https://github.com/QuantStack/xsimd
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xtl && mkdir build && cd build && cmake .. && sudo make install
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xsimd && mkdir build && cd build && cmake .. && sudo make install
-ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD && make xbenchmark
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get update"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get install cmake git g++ -y"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "git clone https://github.com/QuantStack/xtl"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "git clone https://github.com/QuantStack/xtensor"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "git clone https://github.com/QuantStack/xsimd"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xtl && mkdir build && cd build && cmake .. && sudo make install"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xsimd && mkdir build && cd build && cmake .. && sudo make install"
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD && make xbenchmark"
 
 openstack server delete benchmakina
