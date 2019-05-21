@@ -33,10 +33,8 @@ openstack server show benchmakina -c addresses -f json > address.json
 
 cat address.json
 
-python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py
-source getipresult.sh
+export $SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py)
 
-echo "IP ADDRESS "
-echo $SERVER_IPADDR
+echo "IP ADDRESS ", $SERVER_IPADDR
 
 ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@$SERVER_IPADDR /bin/uname -a
