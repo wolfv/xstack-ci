@@ -5,10 +5,14 @@ echo "Running next version."
 
 export WORKDIR=`pwd`
 
-mkdir -p ~/.ssh/
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
 
 echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
 echo $SSH_PUBLIC_KEY > ~/.ssh/id_rsa.pub
+
+chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa.pub
 
 apt update
 apt install jq python3-dev python3-pip ssh -y
