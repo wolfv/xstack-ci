@@ -23,8 +23,10 @@ openstack server create benchmakina --flavor b2-7 --image 9f8b2735-4c30-4784-984
 openstack server show benchmakina
 openstack server show benchmakina -c addresses -f json > address.json
 
-python3 getip.py
-source getipresult.sh
+ls -al
+
+python3 $WORKDIR/getip.py
+source $WORKDIR/getipresult.sh
 
 echo "IP ADDRESS "
 echo $SERVER_IPADDR
