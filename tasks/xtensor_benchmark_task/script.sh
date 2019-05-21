@@ -29,7 +29,7 @@ ls -al ./buildscripts/tasks
 
 active="NOTHING"
 
-until [ "$active" == "ACTIVE" ]
+until [ "$active" = "ACTIVE" ]
 do
   active=$(openstack server show benchmakina -f json | jq -r .status)
   echo "Status: " $active
