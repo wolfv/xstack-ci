@@ -5,8 +5,8 @@ echo "Running next version."
 
 export WORKDIR=`pwd`
 
-apt update
-apt install jq python3-dev python3-pip ssh -y
+apt-get update
+apt-get install jq python3-dev python3-pip ssh -y
 
 python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/formatssh.py
 cat ~/ssh_key
