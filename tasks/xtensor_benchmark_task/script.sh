@@ -55,4 +55,4 @@ ssh -o StrictHostKeyChecking=no -i ssh_key -o StrictHostKeyChecking=no ubuntu@$S
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "cd xsimd && mkdir build && cd build && cmake .. && sudo make install"
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "cd xtensor && mkdir build && cd build && cmake .. -DBUILD_BENCHMARK=ON -DXTENSOR_USE_XSIMD=ON && make xbenchmark"
 
-# openstack server delete $SERVER_NAME
+openstack server delete $SERVER_NAME
