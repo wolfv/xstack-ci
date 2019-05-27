@@ -1,11 +1,30 @@
 #!/bin/sh
-set -e
+set -e -v
 
 cd ~
 export WORKDIR=`pwd`
 
+# SOME SYSTEM FIDDLING
+sudo mkdir /benchresults
+sudo mount -t ext4 /dev/sdb /benchresults
+
+mkdir -p ~/.ssh/
+
+cat >> ~/.ssh/config <<EOL
+Host gitkey.com
+    Hostname github.com
+    User git
+    IdentityFile /benchresults/git_key
+EOL
+
+
+# install requirements
+
 sudo apt-get update
 sudo apt-get install cmake g++ wget git ninja-build -y
+
+# add github to known hosts
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 export CC=gcc
 export CXX=g++
@@ -23,21 +42,6 @@ hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
 conda install pybind11 asv -c conda-forge
-
-# SOME SYSTEM FIDDLING
-sudo mkdir /benchresults
-sudo mount -t ext4 /dev/sdb /benchresults
-
-mkdir -p ~/.ssh/
-
-cat >> ~/.ssh/config <<EOL
-Host gitkey.com
-    Hostname github.com
-    User git
-    IdentityFile /benchresults/git_key
-EOL
-
-ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # RUN THE BENCHMARKS
 
