@@ -42,9 +42,15 @@ conda config --set always_yes yes --set changeps1 no
 conda update -q conda
 conda install pybind11 asv -c conda-forge
 
+git config --global user.email "benchmachineV1@quantstack.net"
+git config --global user.name "Benchmachine V1"
+
 # RUN THE BENCHMARKS
 
 cd /benchresults
+
+# for now remove everytime
+rm -rf /benchresults/xtensor-asv
 
 if [ ! -d "xtensor-asv" ]; then
     git clone git@gitkey.com:wolfv/xtensor-asv
@@ -52,8 +58,6 @@ fi
 
 cd /benchresults/xtensor-asv
 
-git config --global user.email "benchmachineV1@quantstack.net"
-git config --global user.name "Benchmachine V1"
 
 git pull origin master
 git fetch -u origin gh-pages:gh-pages -f
