@@ -34,11 +34,10 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 mkdir -p ~/.ssh
 ssh-keyscan $SERVER_IPADDR >> ~/.ssh/known_hosts
 
-scp $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
-
+ssh -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
+scp -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
 ssh -i ssh_key -o StrictHostKeyChecking=no ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh"
 
-# ssh -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get update"
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get install cmake git g++ -y"
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "git clone https://github.com/QuantStack/xtl"
