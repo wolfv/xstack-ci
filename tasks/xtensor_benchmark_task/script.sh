@@ -36,6 +36,12 @@ sleep 10s
 mkdir -p ~/.ssh
 ssh-keyscan $SERVER_IPADDR >> ~/.ssh/known_hosts
 
+until ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
+do
+  echo "Try again";
+  sleep 2s;
+done
+
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
 scp -o StrictHostKeyChecking=no -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
 ssh -o StrictHostKeyChecking=no -i ssh_key -o StrictHostKeyChecking=no ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh"
