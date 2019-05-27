@@ -31,6 +31,11 @@ openstack server show $SERVER_NAME -c addresses -f json > address.json
 # extract the IP address.
 export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/getip.py)
 
+echo $SERVER_IPADDR
+cat ssh_key
+
+sleep 15s
+
 # mkdir -p ~/.ssh
 # ssh-keyscan $SERVER_IPADDR >> ~/.ssh/known_hosts
 
