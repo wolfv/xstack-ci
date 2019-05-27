@@ -53,6 +53,9 @@ fi
 
 cd /benchresults/xtensor-asv
 
+git config --global user.email "benchmachineV1@quantstack.net"
+git config --global user.name "Benchmachine V1"
+
 git pull origin master
 git fetch -u origin gh-pages:gh-pages -f
 
