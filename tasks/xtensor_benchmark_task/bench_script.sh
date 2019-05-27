@@ -26,7 +26,7 @@ conda install pybind11 asv -c conda-forge
 
 # SOME SYSTEM FIDDLING
 sudo mkdir /benchresults
-sudo mount -t /dev/sdb /benchresults
+sudo mount -t ext4 /dev/sdb /benchresults
 
 mkdir -p ~/.ssh/
 
