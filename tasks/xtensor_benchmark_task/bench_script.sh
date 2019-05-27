@@ -19,7 +19,6 @@ EOL
 
 
 # install requirements
-
 sudo apt-get update
 sudo apt-get install cmake g++ wget git ninja-build -y
 
@@ -63,7 +62,7 @@ asv machine --yes
 
 if [ $1 ]; then
 	git clone https://github.com/QuantStack/xtensor ~/check_xtensor_versions
-	python3 scripts/get_historical_tags.py > tags.txt
+	python3 scripts/get_historical_tags.py ~/check_xtensor_versions $1 > tags.txt
 	cat tags.txt
 	sh loop_tags.sh tags.txt
 else
