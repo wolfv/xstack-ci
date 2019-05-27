@@ -61,6 +61,12 @@ git fetch -u origin gh-pages:gh-pages -f
 
 asv machine --yes
 
-asv run
-
+if [ $1 ]; then
+	git clone https://github.com/QuantStack/xtensor ~/check_xtensor_versions
+	python3 scripts/get_historical_tags.py > tags.txt
+	cat tags.txt
+	sh loop_tags.sh tags.txt
+else
+	asv run
+fi;
 asv gh-pages

@@ -44,7 +44,7 @@ done
 
 ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
 scp -o StrictHostKeyChecking=no -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
-ssh -o StrictHostKeyChecking=no -i ssh_key -o StrictHostKeyChecking=no ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh"
+ssh -o StrictHostKeyChecking=no -i ssh_key -o StrictHostKeyChecking=no ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh $1"
 
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get update"
 # ssh -i ssh_key ubuntu@$SERVER_IPADDR "sudo apt-get install cmake git g++ -y"
