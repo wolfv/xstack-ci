@@ -5,7 +5,7 @@ cd ~
 export WORKDIR=`pwd`
 
 sudo apt-get update
-sudo apt-get install cmake g++ wget git ninja -y
+sudo apt-get install cmake g++ wget git ninja-build -y
 
 export CC=gcc
 export CXX=g++
