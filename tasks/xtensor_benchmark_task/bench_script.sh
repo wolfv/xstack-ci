@@ -50,14 +50,13 @@ git config --global user.name "Benchmachine V1"
 cd /benchresults
 
 # for now remove everytime
-rm -rf /benchresults/xtensor-asv
+# rm -rf /benchresults/xtensor-asv
 
 if [ ! -d "xtensor-asv" ]; then
     git clone git@gitkey.com:wolfv/xtensor-asv
 fi
 
 cd /benchresults/xtensor-asv
-
 
 git pull origin master
 git fetch -u origin gh-pages:gh-pages -f
@@ -72,4 +71,7 @@ if [ $1 ]; then
 else
 	asv run
 fi;
+
 asv gh-pages
+
+sudo umount /benchresults
