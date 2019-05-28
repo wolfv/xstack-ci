@@ -48,9 +48,8 @@ resources:
 - name: buildscripts
   type: git
   source:
-    uri: https://github.com/xtensorgistbucket/droneme
+    uri: https://github.com/wolfv/xstack-ci
     branch: master
-
 
 jobs:
 - name: job-xtl-test

@@ -34,15 +34,14 @@ export SERVER_IPADDR=$(python3 $WORKDIR/buildscripts/tasks/xtensor_benchmark_tas
 sleep 10s
 
 mkdir -p ~/.ssh
-ssh-keyscan $SERVER_IPADDR >> ~/.ssh/known_hosts
 
-until ssh -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
+until ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
 do
   echo "Try again";
   sleep 2s;
 done
 
-scp -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
-ssh -i ssh_key ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh $1"
+scp -o StrictHostKeyChecking=no -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
+ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "sh ~/bench_script.sh $1"
 
 openstack server delete $SERVER_NAME
