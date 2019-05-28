@@ -124,7 +124,7 @@ machine which costs roughly 17 cent an hour. If we use it 20 times a month for
 other CI services (which don't support dedicated benchmarking!). The volume to
 store the benchmarks on costs 0.40 Euro / month.
 
-#### Further notes: debugging docker-compose
+## Further notes: debugging docker-compose
 
 - Restarting Concourse is tricky, for some reason the Concourse worker doesn't
   always come up correctly. If it doesn't, one needs to `prune` the worker:
