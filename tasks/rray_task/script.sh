@@ -12,7 +12,10 @@ export CC=gcc
 export CXX=g++
 
 cd rray
-Rscript -e 'install.packages("remotes", repos="http://cran.us.r-project.org")'
+
+git clone https://github.com/DavisVaughan/rray.git
+
 Rscript -e 'remotes::install_github("DavisVaughan/Xtensor.R", ref = "dev", force = TRUE)'
-Rscript -e 'remotes::install_github("DavisVaughan/rray")'
-Rscript -e 'devtools::check()'
+Rscript -e 'devtools::install_dev_deps()'
+R CMD build rray --no-manual
+R CMD check rray_0.0.0.9000.tar.gz --as-cran
