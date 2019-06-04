@@ -14,6 +14,7 @@ export CXX=g++
 cd rray
 
 git clone https://github.com/DavisVaughan/rray.git
+cd rray
 
 Rscript -e 'install.packages(c("remotes", "rcmdcheck"))'
 Rscript -e 'remotes::install_github("DavisVaughan/Xtensor.R", ref = "dev", force = TRUE)'
