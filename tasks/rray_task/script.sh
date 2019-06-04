@@ -3,6 +3,8 @@ set -e
 
 export WORKDIR=`pwd`
 
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update
 apt-get install cmake g++ wget git gzip r-base-dev r-cran-devtools -y
 
