@@ -6,7 +6,7 @@ export WORKDIR=`pwd`
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
-apt-get install cmake g++ wget git gzip r-base-dev r-cran-devtools -y
+apt-get install cmake g++ wget git gzip libcurl4-openssl-dev r-base-dev r-cran-devtools -y
 
 export CC=gcc
 export CXX=g++
