@@ -15,7 +15,7 @@ cd rray
 
 git clone https://github.com/DavisVaughan/rray.git
 
+Rscript -e 'install.packages(c("remotes", "rcmdcheck"))'
 Rscript -e 'remotes::install_github("DavisVaughan/Xtensor.R", ref = "dev", force = TRUE)'
-Rscript -e 'devtools::install_dev_deps()'
-R CMD build rray --no-manual
-R CMD check rray_0.0.0.9000.tar.gz --as-cran
+Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+Rscript -e 'rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")'
