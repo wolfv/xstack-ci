@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: ubuntu, tag: 18.04}
+
+inputs:
+- name: buildscripts
+- name: xtl
+- name: xtensor
+- name: rray
+
+run:
+  path: buildscripts/tasks/rray_task/script.sh
+  args: []

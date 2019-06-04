@@ -45,6 +45,11 @@ resources:
   source:
     uri: https://github.com/rjsberry/xtensor-interpolate
     branch: master
+- name: rray
+  type: git
+  source:
+    uri: https://github.com/DavisVaughan/rray
+    branch: master
 - name: buildscripts
   type: git
   source:
@@ -170,3 +175,17 @@ jobs:
     trigger: true
   - task: xtensor-interpolate-test
     file: buildscripts/tasks/xtensor_interpolate_task/test.yml
+
+- name: job-rray-test
+  public: true
+  serial_groups: [sg1]
+  plan:
+  - get: buildscripts
+  - get: xtl
+  - get: xtensor
+    passed: [job-xtensor-test]
+    trigger: true
+  - get: rray
+    trigger: true
+  - task: rray-test
+    file: buildscripts/tasks/rray_task/test.yml
