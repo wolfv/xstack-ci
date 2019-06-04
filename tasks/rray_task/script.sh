@@ -4,7 +4,7 @@ set -e
 export WORKDIR=`pwd`
 
 apt-get update
-apt-get install cmake g++ wget git libfftw3-dev -y
+apt-get install cmake g++ wget git gzip -y
 
 export CC=gcc
 export CXX=g++
