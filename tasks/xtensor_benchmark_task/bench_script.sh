@@ -74,6 +74,8 @@ fi;
 
 asv gh-pages
 
+# try unmounting
+cd /
 sudo umount /benchresults
 
 sudo shutdown -h now
