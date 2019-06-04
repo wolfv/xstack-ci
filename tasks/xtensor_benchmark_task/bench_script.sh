@@ -75,3 +75,5 @@ fi;
 asv gh-pages
 
 sudo umount /benchresults
+
+sudo shutdown -h now
