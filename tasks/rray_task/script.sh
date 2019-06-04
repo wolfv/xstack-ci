@@ -11,6 +11,8 @@ apt-get install cmake g++ wget git gzip libcurl4-openssl-dev libssl-dev r-base-d
 export CC=gcc
 export CXX=g++
 
+export CI=true 
+
 cd rray
 
 git clone https://github.com/DavisVaughan/rray.git
