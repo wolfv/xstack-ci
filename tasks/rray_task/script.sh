@@ -13,5 +13,6 @@ export CXX=g++
 
 cd rray
 Rscript -e 'install.packages("covr", repos="http://cran.us.r-project.org")'
+Rscript -e 'install.packages("remotes", repos="http://cran.us.r-project.org")'
 Rscript -e 'remotes::install_github("DavisVaughan/Xtensor.R", ref = "dev", force = TRUE)'
 Rscript -e 'covr::codecov()'
