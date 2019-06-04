@@ -5,8 +5,8 @@ export WORKDIR=`pwd`
 
 echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 
-apt update
-apt install wget g++ git -y
+apt-get update
+apt-get install wget g++ git -y
 apt-get -t stretch-backports install "cmake" -y
 
 export CC=gcc

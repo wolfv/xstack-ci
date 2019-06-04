@@ -3,8 +3,8 @@ set -e
 
 export WORKDIR=`pwd`
 
-apt update
-apt install cmake g++ wget git libfftw3-dev -y
+apt-get update
+apt-get install cmake g++ wget git libfftw3-dev -y
 
 export CC=gcc
 export CXX=g++

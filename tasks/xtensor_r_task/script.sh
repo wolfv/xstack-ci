@@ -3,8 +3,8 @@ set -e
 
 export WORKDIR=`pwd`
 
-apt update
-apt install cmake g++ gfortran wget git -y
+apt-get update
+apt-get install cmake g++ gfortran wget git -y
 
 export CC=gcc
 export CXX=g++
