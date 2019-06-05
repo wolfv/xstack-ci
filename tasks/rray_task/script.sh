@@ -5,17 +5,13 @@ export WORKDIR=`pwd`
 
 export DEBIAN_FRONTEND=noninteractive
 
+
+# libcurl4-openssl-dev required for curl package
+# libssl-dev required for openssl package
+# locales required for R CMD check setting to en_US.UTF-8 locale
 apt-get update
-apt-get install cmake g++ wget git gzip r-base-dev r-cran-devtools -y
-
-# Required for curl package
-apt-get install libcurl4-openssl-dev -y
-
-# Required for openssl package
-apt-get install libssl-dev -y
-
-# Required for R CMD check setting to en_US.UTF-8 locale
-apt-get install locales -y
+apt-get install -y cmake g++ wget git gzip r-base-dev r-cran-devtools \
+				   libcurl4-openssl-dev libssl-dev locales
 
 # Set default locale, as done with rocker/r-base
 # https://hub.docker.com/r/rocker/r-base/dockerfile
@@ -33,10 +29,6 @@ export CXX=g++
 # To use bundled remotes GitHub PAT
 export CI=true 
 
-cd rray
-
-# Clone rray and move to its directory
-git clone https://github.com/DavisVaughan/rray.git
 cd rray
 
 Rscript -e 'install.packages(c("remotes", "rcmdcheck"))'
