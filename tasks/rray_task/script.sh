@@ -14,6 +14,15 @@ apt-get install libcurl4-openssl-dev -y
 # Required for openssl package
 apt-get install libssl-dev -y
 
+# Required for R CMD check setting to en_US.UTF-8 locale
+apt-get install locales -y
+
+# Set default locale, as done with rocker/r-base
+# https://hub.docker.com/r/rocker/r-base/dockerfile
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+	&& locale-gen en_US.utf8 \
+	&& /usr/sbin/update-locale LANG=en_US.UTF-8
+
 export CC=gcc
 export CXX=g++
 
