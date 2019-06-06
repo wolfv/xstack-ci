@@ -59,7 +59,6 @@ fi
 cd /benchresults/xtensor-asv
 
 git pull origin master
-git fetch -u origin gh-pages:gh-pages -f
 
 asv machine --yes
 
