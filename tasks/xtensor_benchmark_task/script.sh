@@ -47,4 +47,6 @@ ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "sh ~/bench_scr
 # Wait for shutdown!
 sleep 30s
 
+openstack server remove volume $SERVER_NAME benchresults
+
 openstack server delete $SERVER_NAME
