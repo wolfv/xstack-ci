@@ -18,11 +18,18 @@ export SERVER_IMAGE=`openstack image list -f json | jq -r '.[] | select(.Name=="
 openstack server create $SERVER_NAME --flavor b2-7 --image $SERVER_IMAGE --key-name ngkey
 
 # wait until the openstack server is active!
+counter=0
 active="FALSE"
 until [ "$active" = "ACTIVE" ]
 do
   active=$(openstack server show $SERVER_NAME -f json | jq -r .status)
   echo "Status: " $active
+  sleep 2s;
+  counter=$((counter+1))
+  if [[ "$counter" -gt 150 ]]; then
+       echo "Counter: $counter times reached; Exiting loop!";
+       exit 1;
+  done
 done
 
 openstack server add volume $SERVER_NAME benchresults
@@ -36,10 +43,16 @@ sleep 10s
 
 mkdir -p ~/.ssh
 
+counter=0
 until ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@$SERVER_IPADDR "/bin/uname -a"
 do
   echo "Try again";
   sleep 2s;
+  counter=$((counter+1))
+  if [[ "$counter" -gt 150 ]]; then
+       echo "Counter: $counter times reached; Exiting loop!";
+       exit 1;
+  done
 done
 
 scp -o StrictHostKeyChecking=no -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
