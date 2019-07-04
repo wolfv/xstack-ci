@@ -29,7 +29,7 @@ do
   if [[ "$counter" -gt 150 ]]; then
        echo "Counter: $counter times reached; Exiting loop!";
        exit 1;
-  done
+  fi
 done
 
 openstack server add volume $SERVER_NAME benchresults
@@ -52,7 +52,7 @@ do
   if [[ "$counter" -gt 150 ]]; then
        echo "Counter: $counter times reached; Exiting loop!";
        exit 1;
-  done
+  fi
 done
 
 scp -o StrictHostKeyChecking=no -i ssh_key $WORKDIR/buildscripts/tasks/xtensor_benchmark_task/bench_script.sh ubuntu@$SERVER_IPADDR:~/bench_script.sh
