@@ -14,7 +14,8 @@ pip3 install python-openstackclient
 export SERVER_NAME="benchmachine"
 
 # create openstack server with ubuntu 18.04
-openstack server create $SERVER_NAME --flavor b2-7 --image 9f8b2735-4c30-4784-9847-dc18b0e58951 --key-name ngkey
+export SERVER_IMAGE=`openstack image list -f json | jq -r '.[] | select(.Name=="Ubuntu 18.04")["ID"]'`
+openstack server create $SERVER_NAME --flavor b2-7 --image $SERVER_IMAGE --key-name ngkey
 
 # wait until the openstack server is active!
 active="FALSE"
