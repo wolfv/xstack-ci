@@ -26,7 +26,7 @@ do
   echo "Status: " $active
   sleep 2s;
   counter=$((counter+1))
-  if [[ "$counter" -gt 150 ]]; then
+  if [ "$counter" -gt 150 ]; then
        echo "Counter: $counter times reached; Exiting loop!";
        exit 1;
   fi
@@ -49,7 +49,7 @@ do
   echo "Try again";
   sleep 2s;
   counter=$((counter+1))
-  if [[ "$counter" -gt 150 ]]; then
+  if [ "$counter" -gt 150 ]; then
        echo "Counter: $counter times reached; Exiting loop!";
        exit 1;
   fi
