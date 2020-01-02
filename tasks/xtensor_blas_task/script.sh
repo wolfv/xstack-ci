@@ -19,7 +19,7 @@ export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
-conda install nlohmann_json openblas mkl -c QuantStack -c conda-forge
+conda install nlohmann_json openblas mkl -c conda-forge
 
 # install xtl
 

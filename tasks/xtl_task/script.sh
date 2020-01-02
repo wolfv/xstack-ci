@@ -19,7 +19,7 @@ export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
-conda install nlohmann_json -c QuantStack
+conda install nlohmann_json -c conda-forge
 
 cd xtl
 mkdir build

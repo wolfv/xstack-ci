@@ -19,7 +19,7 @@ export PATH="$WORKDIR/miniconda/bin:$PATH"
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update -q conda
-conda install nlohmann_json pybind11 numpy pytest -c QuantStack -c conda-forge
+conda install nlohmann_json pybind11 numpy pytest -c conda-forge
 
 export PY_EXE=`which python3`
 
